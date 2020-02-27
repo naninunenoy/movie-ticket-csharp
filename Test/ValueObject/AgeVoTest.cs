@@ -2,7 +2,7 @@ using System;
 using NUnit.Framework;
 using MovieTicketCsharp.ValueObject;
 
-namespace MovieTicketCsharp.Test {
+namespace MovieTicketCsharp.Test.ValueObject {
     public class AgeVoTest {
         [SetUp]
         public void Setup() {

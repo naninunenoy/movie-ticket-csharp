@@ -1,7 +1,7 @@
 ﻿namespace MovieTicketCsharp.Domain {
     public enum StudentType {
         /// <summary>
-        /// 未就学児
+        /// 未就学児(3歳以上)
         /// </summary>
         Preschool,
         /// <summary>

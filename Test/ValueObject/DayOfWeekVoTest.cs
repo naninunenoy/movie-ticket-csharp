@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using MovieTicketCsharp.ValueObject;
 
-namespace MovieTicketCsharp.Test {
+namespace MovieTicketCsharp.Test.ValueObject {
     public class DayOfWeekVoTest {
         [SetUp]
         public void Setup() {
