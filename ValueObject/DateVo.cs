@@ -21,6 +21,6 @@ namespace MovieTicketCsharp.ValueObject {
             Day = day;
         }
 
-        public bool IsFirstDay() => Day == 1;
+        public bool IsMovieDay() => Day == 1;
     }
 }
