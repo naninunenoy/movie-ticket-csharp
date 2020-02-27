@@ -11,10 +11,10 @@ namespace MovieTicketCsharp.ValueObject {
                 throw new ArgumentException("year is not negative");
             }
             if (month < 0 || 12 < month) {
-                throw new ArgumentException("not in range 1-12");
+                throw new ArgumentException("month is not in range 1-12");
             }
             if (day < 0 || 31 < day) {
-                throw new ArgumentException("not in range 1-31");
+                throw new ArgumentException("day is not in range 1-31");
             }
             Year = year;
             Month = month;
