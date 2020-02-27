@@ -10,17 +10,17 @@ namespace MovieTicketCsharp.ValueObject {
             var d = dateTime;
             try {
                 Date = new DateVo(d.Year, d.Month, d.Day);
-            } catch (ArgumentException e) {
+            } catch (ArgumentException) {
                 throw;
             }
             try {
                 DayOfWeek = new DayOfWeekVo((int)d.DayOfWeek);
-            } catch (ArgumentException e) {
+            } catch (ArgumentException) {
                 throw;
             }
             try {
                 Time = new TimeVo(d.Hour);
-            } catch (ArgumentException e) {
+            } catch (ArgumentException) {
                 throw;
             }
         }
