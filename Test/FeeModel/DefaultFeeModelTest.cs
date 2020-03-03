@@ -8,6 +8,7 @@ namespace MovieTicketCsharp.Test.FeeModel {
         DefaultFeeModel model;
         [SetUp]
         public void Setup() {
+            model = new DefaultFeeModel();
         }
 
         [Test]
@@ -58,39 +59,35 @@ namespace MovieTicketCsharp.Test.FeeModel {
         }
 
 
-        [Test]
-        public void 映画の日() {
+        [TestCase(1100)]
+        public void 映画の日(int price) {
             Assert.That(
-                model.Calculate(TestDateTimeVo.Sunday.SetDay(1), TestAgeVo.AgeOf(69)),
-                Is.EqualTo(1100)
+                model.Calculate(TestDateTimeVo.FirstDay.Sunday, TestAgeVo.AgeOf(69)),
+                Is.EqualTo(price)
             );
             Assert.That(
-                model.Calculate(TestDateTimeVo.Sunday.SetDay(1), TestAgeVo.AgeOf(69)),
-                Is.EqualTo(1100)
+                model.Calculate(TestDateTimeVo.FirstDay.Monday, TestAgeVo.AgeOf(69)),
+                Is.EqualTo(price)
             );
             Assert.That(
-                model.Calculate(TestDateTimeVo.Monday.SetDay(1), TestAgeVo.AgeOf(69)),
-                Is.EqualTo(1100)
+                model.Calculate(TestDateTimeVo.FirstDay.Tuesday, TestAgeVo.AgeOf(69)),
+                Is.EqualTo(price)
             );
             Assert.That(
-                model.Calculate(TestDateTimeVo.Tuesday.SetDay(1), TestAgeVo.AgeOf(69)),
-                Is.EqualTo(1100)
+                model.Calculate(TestDateTimeVo.FirstDay.Wednesday, TestAgeVo.AgeOf(69)),
+                Is.EqualTo(price)
             );
             Assert.That(
-                model.Calculate(TestDateTimeVo.Wednesday.SetDay(1), TestAgeVo.AgeOf(69)),
-                Is.EqualTo(1100)
+                model.Calculate(TestDateTimeVo.FirstDay.Thursday, TestAgeVo.AgeOf(69)),
+                Is.EqualTo(price)
             );
             Assert.That(
-                model.Calculate(TestDateTimeVo.Thursday.SetDay(1), TestAgeVo.AgeOf(69)),
-                Is.EqualTo(1100)
+                model.Calculate(TestDateTimeVo.FirstDay.Friday, TestAgeVo.AgeOf(69)),
+                Is.EqualTo(price)
             );
             Assert.That(
-                model.Calculate(TestDateTimeVo.Friday.SetDay(1), TestAgeVo.AgeOf(69)),
-                Is.EqualTo(1100)
-            );
-            Assert.That(
-                model.Calculate(TestDateTimeVo.Saturday.SetDay(1), TestAgeVo.AgeOf(69)),
-                Is.EqualTo(1100)
+                model.Calculate(TestDateTimeVo.FirstDay.Saturday, TestAgeVo.AgeOf(69)),
+                Is.EqualTo(price)
             );
         }
 
@@ -98,7 +95,7 @@ namespace MovieTicketCsharp.Test.FeeModel {
         [TestCase(20, 1100)]
         [TestCase(4, 1100)]
         [TestCase(5, 1100)]
-        public void 平日_60歳以上(int hour, int price) {
+        public void 平日_70歳以上(int hour, int price) {
             Assert.That(
                 model.Calculate(TestDateTimeVo.Monday.SetHour(hour), TestAgeVo.AgeOf(70)),
                 Is.EqualTo(price)
@@ -125,7 +122,7 @@ namespace MovieTicketCsharp.Test.FeeModel {
         [TestCase(20, 1100)]
         [TestCase(4, 1100)]
         [TestCase(5, 1100)]
-        public void 土日_60歳以上(int hour, int price) {
+        public void 土日_70歳以上(int hour, int price) {
             Assert.That(
                 model.Calculate(TestDateTimeVo.Saturday.SetHour(hour), TestAgeVo.AgeOf(70)),
                 Is.EqualTo(price)
@@ -136,40 +133,35 @@ namespace MovieTicketCsharp.Test.FeeModel {
             );
         }
 
-
-        [Test]
-        public void 映画の日_60歳以上() {
+        [TestCase(1100)]
+        public void 映画の日_70歳以上(int price) {
             Assert.That(
-                model.Calculate(TestDateTimeVo.Sunday.SetDay(1), TestAgeVo.AgeOf(70)),
-                Is.EqualTo(1100)
+                model.Calculate(TestDateTimeVo.FirstDay.Sunday, TestAgeVo.AgeOf(70)),
+                Is.EqualTo(price)
             );
             Assert.That(
-                model.Calculate(TestDateTimeVo.Sunday.SetDay(1), TestAgeVo.AgeOf(70)),
-                Is.EqualTo(1100)
+                model.Calculate(TestDateTimeVo.FirstDay.Monday, TestAgeVo.AgeOf(70)),
+                Is.EqualTo(price)
             );
             Assert.That(
-                model.Calculate(TestDateTimeVo.Monday.SetDay(1), TestAgeVo.AgeOf(70)),
-                Is.EqualTo(1100)
+                model.Calculate(TestDateTimeVo.FirstDay.Tuesday, TestAgeVo.AgeOf(70)),
+                Is.EqualTo(price)
             );
             Assert.That(
-                model.Calculate(TestDateTimeVo.Tuesday.SetDay(1), TestAgeVo.AgeOf(70)),
-                Is.EqualTo(1100)
+                model.Calculate(TestDateTimeVo.FirstDay.Wednesday, TestAgeVo.AgeOf(70)),
+                Is.EqualTo(price)
             );
             Assert.That(
-                model.Calculate(TestDateTimeVo.Wednesday.SetDay(1), TestAgeVo.AgeOf(70)),
-                Is.EqualTo(1100)
+                model.Calculate(TestDateTimeVo.FirstDay.Thursday, TestAgeVo.AgeOf(70)),
+                Is.EqualTo(price)
             );
             Assert.That(
-                model.Calculate(TestDateTimeVo.Thursday.SetDay(1), TestAgeVo.AgeOf(70)),
-                Is.EqualTo(1100)
+                model.Calculate(TestDateTimeVo.FirstDay.Friday, TestAgeVo.AgeOf(70)),
+                Is.EqualTo(price)
             );
             Assert.That(
-                model.Calculate(TestDateTimeVo.Friday.SetDay(1), TestAgeVo.AgeOf(70)),
-                Is.EqualTo(1100)
-            );
-            Assert.That(
-                model.Calculate(TestDateTimeVo.Saturday.SetDay(1), TestAgeVo.AgeOf(70)),
-                Is.EqualTo(1100)
+                model.Calculate(TestDateTimeVo.FirstDay.Saturday, TestAgeVo.AgeOf(70)),
+                Is.EqualTo(price)
             );
         }
     }
