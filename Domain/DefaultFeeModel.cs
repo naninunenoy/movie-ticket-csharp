@@ -5,7 +5,7 @@ namespace MovieTicketCsharp.Domain {
         public DefaultFeeModel(int age) {
 
         }
-        public int Calculate(DateTimeVo dateTime, AgeVo age) {
+        public int Calculate(DateTimeVo dateTime) {
             throw new System.NotImplementedException();
         }
     }

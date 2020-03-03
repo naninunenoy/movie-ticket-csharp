@@ -19,7 +19,7 @@ namespace MovieTicketCsharp.Test.FeeModel {
 
         [Test]
         public void 赤ちゃんは無料() {
-            Assert.That(model.Calculate(default, default), Is.Zero);
+            Assert.That(model.Calculate(default), Is.Zero);
         }
     }
 }

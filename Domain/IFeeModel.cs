@@ -2,6 +2,6 @@
 
 namespace MovieTicketCsharp.Domain {
     public interface IFeeModel {
-        int Calculate(DateTimeVo dateTime, AgeVo age);
+        int Calculate(DateTimeVo dateTime);
     }
 }
