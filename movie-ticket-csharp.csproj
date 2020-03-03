@@ -11,4 +11,16 @@
     <PackageReference Include="NUnit" Version="3.12.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Test\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Test\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Test\**" />
+  </ItemGroup>
+
 </Project>
