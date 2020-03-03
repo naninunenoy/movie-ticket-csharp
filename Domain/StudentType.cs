@@ -3,7 +3,7 @@
         /// <summary>
         /// 未就学児(3歳以上)
         /// </summary>
-        Preschool,
+        Preschool = 0,
         /// <summary>
         /// 小学生
         /// </summary>
