@@ -4,12 +4,12 @@ using MovieTicketCsharp.ValueObject;
 using MovieTicketCsharp.Domain;
 
 namespace MovieTicketCsharp.Test.FeeModel {
-    public class CinemaCitizenFeeModelTest {
+    public class CinemaCitizenFeeModelTest_MoreThan60Years {
         CinemaCitizenFeeModel model;
 
         [SetUp]
         public void Setup() {
-            model = new CinemaCitizenFeeModel(59);
+            model = new CinemaCitizenFeeModel(60);
         }
 
         [Test]
@@ -44,10 +44,10 @@ namespace MovieTicketCsharp.Test.FeeModel {
             );
         }
 
-        [TestCase(19, 1300)]
+        [TestCase(19, 1000)]
         [TestCase(20, 1000)]
         [TestCase(4, 1000)]
-        [TestCase(5, 1300)]
+        [TestCase(5, 1000)]
         public void 土日(int hour, int price) {
             Assert.That(
                 model.Calculate(TestDateTimeVo.Saturday.SetHour(hour), TestAgeVo.AgeOf(60)),
@@ -59,12 +59,12 @@ namespace MovieTicketCsharp.Test.FeeModel {
             );
         }
 
-        [TestCase(19, 1000)]
-        [TestCase(20, 1000)]
-        [TestCase(4, 1000)]
-        [TestCase(5, 1000)]
-        public void 映画の日_平日(int hour, int price) {
-            //平日なら「映画の日」に関係なく1,000円！らしい
+        [TestCase(1000)]
+        public void 映画の日_平日(int price) {
+            Assert.That(
+                model.Calculate(TestDateTimeVo.FirstDay.Sunday, TestAgeVo.AgeOf(60)),
+                Is.EqualTo(price)
+            );
             Assert.That(
                 model.Calculate(TestDateTimeVo.FirstDay.Monday, TestAgeVo.AgeOf(60)),
                 Is.EqualTo(price)
@@ -83,18 +83,6 @@ namespace MovieTicketCsharp.Test.FeeModel {
             );
             Assert.That(
                 model.Calculate(TestDateTimeVo.FirstDay.Friday, TestAgeVo.AgeOf(60)),
-                Is.EqualTo(price)
-            );
-        }
-
-        [TestCase(19, 1100)]
-        [TestCase(20, 1000)]
-        [TestCase(4, 1000)]
-        [TestCase(5, 1100)]
-        public void 映画の日_土日(int hour, int price) {
-            // 映画の日の1100円が適用されるのは土日の日中のみ?
-            Assert.That(
-                model.Calculate(TestDateTimeVo.FirstDay.Sunday, TestAgeVo.AgeOf(60)),
                 Is.EqualTo(price)
             );
             Assert.That(
