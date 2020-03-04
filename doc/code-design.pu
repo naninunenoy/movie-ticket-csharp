@@ -1,0 +1,69 @@
+﻿@startuml movie
+interface IValueObject
+class AgeVo {
+    int Value
+}
+class DayOfWeekVo {
+    int Value
+    bool IsWeekendDays()
+    bool IsWeekDays()
+}
+class DateVo {
+    int Year
+    int Month
+    int Day
+    bool IsMovieDay()
+}
+class TimeVo {
+    int Hour
+    bool IsLate()
+}
+class DateTimeVo {
+    DateVo Date
+    DayOfWeekVo DayOfWeek
+    TimeVo Time
+}
+
+AgeVo ..|> IValueObject
+DayOfWeekVo ..|> IValueObject
+DateVo ..|> IValueObject
+TimeVo ..|> IValueObject
+DateTimeVo ..|> IValueObject
+DateTimeVo ..> DayOfWeekVo
+DateTimeVo ..> DateVo
+DateTimeVo ..> TimeVo
+
+interface IFeeModel {
+    void Calculate(DateTimeVo)
+}
+IFeeModel -- DateTimeVo
+
+class BabyFeeModel
+class CinemaCitizenFeeModel
+class DefaultFeeModel
+class HandicapFeeModel
+class StudentFeeModel
+enum StudentType
+
+BabyFeeModel ..|> IFeeModel : 実現
+CinemaCitizenFeeModel ..|> IFeeModel : 実現
+DefaultFeeModel ..|> IFeeModel : 実現
+HandicapFeeModel ..|> IFeeModel : 実現
+StudentFeeModel ..|> IFeeModel : 実現
+StudentFeeModel -- StudentType
+
+class FeeCalculator {
+    int weekdayFee
+    int weekdayNightFee
+    int holidayFee
+    int holidayNightFee
+    int moviesDayFee
+    int CalcByDateTime(DateTimeVo)
+}
+FeeCalculator -- DateTimeVo
+CinemaCitizenFeeModel .up.> FeeCalculator : 委譲
+DefaultFeeModel .up.> FeeCalculator : 委譲
+HandicapFeeModel .up.> FeeCalculator : 委譲
+StudentFeeModel .up.> FeeCalculator : 委譲
+
+@enduml
