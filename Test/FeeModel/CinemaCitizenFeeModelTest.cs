@@ -66,23 +66,23 @@ namespace MovieTicketCsharp.Test.FeeModel {
         public void 映画の日_平日(int hour, int price) {
             //平日なら「映画の日」に関係なく1,000円！らしい
             Assert.That(
-                model.Calculate(TestDateTimeVo.FirstDay.Monday),
+                model.Calculate(TestDateTimeVo.FirstDay.Monday.SetHour(hour)),
                 Is.EqualTo(price)
             );
             Assert.That(
-                model.Calculate(TestDateTimeVo.FirstDay.Tuesday),
+                model.Calculate(TestDateTimeVo.FirstDay.Tuesday.SetHour(hour)),
                 Is.EqualTo(price)
             );
             Assert.That(
-                model.Calculate(TestDateTimeVo.FirstDay.Wednesday),
+                model.Calculate(TestDateTimeVo.FirstDay.Wednesday.SetHour(hour)),
                 Is.EqualTo(price)
             );
             Assert.That(
-                model.Calculate(TestDateTimeVo.FirstDay.Thursday),
+                model.Calculate(TestDateTimeVo.FirstDay.Thursday.SetHour(hour)),
                 Is.EqualTo(price)
             );
             Assert.That(
-                model.Calculate(TestDateTimeVo.FirstDay.Friday),
+                model.Calculate(TestDateTimeVo.FirstDay.Friday.SetHour(hour)),
                 Is.EqualTo(price)
             );
         }
@@ -94,11 +94,11 @@ namespace MovieTicketCsharp.Test.FeeModel {
         public void 映画の日_土日(int hour, int price) {
             // 映画の日の1100円が適用されるのは土日の日中のみ?
             Assert.That(
-                model.Calculate(TestDateTimeVo.FirstDay.Sunday),
+                model.Calculate(TestDateTimeVo.FirstDay.Sunday.SetHour(hour)),
                 Is.EqualTo(price)
             );
             Assert.That(
-                model.Calculate(TestDateTimeVo.FirstDay.Saturday),
+                model.Calculate(TestDateTimeVo.FirstDay.Saturday.SetHour(hour)),
                 Is.EqualTo(price)
             );
         }
