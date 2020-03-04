@@ -2,9 +2,17 @@
 
 namespace MovieTicketCsharp.Domain {
     public class HandicapFeeModel : IFeeModel {
-        public HandicapFeeModel(bool isMoreThan18Years) { }
-        public int Calculate(DateTimeVo dateTime) {
-            throw new System.NotImplementedException();
+        readonly FeeCalculator calculator;
+
+        public HandicapFeeModel(bool isMoreThan18Years) {
+            if (isMoreThan18Years) {
+                calculator = new FeeCalculator(1000,1000,
+                    1000,1000,1000);
+            } else {
+                calculator = new FeeCalculator(900,900,
+                    900,900,900);
+            }
         }
+        public int Calculate(DateTimeVo dateTime) => calculator.CalcByDateTime(dateTime);
     }
 }
